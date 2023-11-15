@@ -368,6 +368,102 @@
   <center><strong>Round-Robin</strong></center> <br>
   i) Designed for time sharing system. <br>
   ii) It divides time of the CPUamong the processes in ready state, and circularly repeat the same process. <br>
-  iii) 
+  iii) Here we fix a time quantum for a process to execute a process. After time quantum limit exceed the next process will come to queuefor executing. <br>
+  iv) RR is pre-emptive in nature. <br>
+  <h3>Chart (Pre-emptive) TQ = 2 </h3>
+  <table>
+    <tr>
+      <th>Pid</th>
+      <th>A.T</th>
+      <th>B.T</th>
+      <th>T.A.T = E.T - A.T</th>
+      <th>W.T = T.A.T - B.T</th>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>0</td>
+      <td>5</td>
+      <td>13 - 0 = 13</td>
+      <td>13 - 5 = 8</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>1</td>
+      <td>3</td>
+      <td>12 - 1 = 11</td>
+      <td>11 - 3 = 8</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>2</td>
+      <td>1</td>
+      <td>5 - 2 = 3</td>
+      <td>3 - 1 = 2</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>3</td>
+      <td>2</td>
+      <td>9 - 3 = 6</td>
+      <td>6 - 2 = 4</td>
+    </tr>
+    <tr>
+      <td>E</td>
+      <td>4</td>
+      <td>3</td>
+      <td>11 - 4 = 7</td>
+      <td>7 - 3 = 4</td>
+    </tr>
+  </table>
+  <h3>Gantt Chart</h3>
+  <table>
+    <tr>
+      <td>A<br> 0 - 2 </td>
+      <td>B<br> 2 - 4 </td>
+      <td>C<br> 4 - 5 </td>
+      <td>A<br> 5 - 7 </td>
+      <td>D<br> 7 - 9 </td>
+      <td>E<br> 9 - 11 </td>
+      <td>B<br> 11 - 12 </td>
+      <td>A<br> 12 - 13 </td>
+      <td>E<br> 13 - 14 </td>
+    </tr>
+  </table>
+  <strong>Advantages: </strong> <br>
+  i) Perform best in terms of response time. <br>
+  ii) Works well in case of time sharing, client server architecture and intermediate system. <br>
+  iii) Kind of SJF implementation. <br>
+  <strong>Disadvantages: </strong> <br>
+  i) Bigger process may starve. <br>
+  ii) performance depends ehavily on time quantum. <br>
+  iii) No idea of priority. <br>
+  <center><strong>Process Synchronization</strong></center>
+  <strong>Race Condition: - </strong>multiple processes are involved in the system and these process access some shared resources now if they access in a mix fashion then system gives different result sometime. <br>
+  <strong>Critical Section Problem</strong> <br>
+  i) Mutual Exclusion - Critical Sectin will only be accessed by single process at a time.<br>
+  ii) Progress - Those process should enter C.S who wants to.<br>
+  iii) Bounded Wait (optional) - After a specific space of time the process should exit CS to overcome starving. <br>
+  <strong>Semaphore</strong> <br>
+  A semaphore is an integer variable int s that apart from initialization is accessed through two atomic standards.
+  <pre>
+    i) wait(s) => wait(s){
+      while(s <= 0);
+      s--;
+    }
+    ii) signal(s) => signal(s){
+      s++;
+    }
+  </pre>
+  <pre>
+<strong>Code</strong>
+  do{
+    wait(s);
+    //critical Section
+    signal(s)
+    //remainder section
+  }
+  while(true);
+  
+  </pre>
 </body>
 </html>
